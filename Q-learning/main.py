@@ -1,8 +1,9 @@
-from Maze_env import Maze
+from maze_env import Maze
 from RL_brain import QLearningTable
 
+
 def update():
-    for episode in range(10):
+    for episode in range(150):
         obersvation = env.reset()   #环境观测
 
         while True:
@@ -19,10 +20,8 @@ def update():
     env.destroy()
 
 if __name__ == "__main__":
-    # 定义环境 env 和 RL 方式
     env = Maze()
     RL = QLearningTable(actions=list(range(env.n_actions)))
 
-    # 开始可视化环境 env
     env.after(100, update)
     env.mainloop()

@@ -34,7 +34,7 @@ class QLearningTable:
         self.check_state_exist(s_)      #检查下一步的状态是否存在
         q_predict = self.q_table.loc[s,a]
         if s_ != 'terminal':
-            q_target = r + self.gamma * self.q_table[s_,:].max()
+            q_target = r + self.gamma * self.q_table.loc[s_,:].max()
         else:
             q_target = r
         self.q_table.loc[s,a] += self.lr * (q_target - q_predict)       #更新为target-predict的值
